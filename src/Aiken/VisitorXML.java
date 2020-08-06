@@ -47,7 +47,7 @@ public class VisitorXML implements QuestionVisitor {
 		question.appendChild(questionText);
 		questionText.setAttribute("format", "html");
 		Element description = document.createElement("text");
-		description.appendChild(document.createTextNode("<![CDATA[<p>"+q.getDescription()+"</p>]]>"));
+		description.appendChild(document.createCDATASection("<p>"+q.getDescription()+"</p>"));
 		questionText.appendChild(description);
 		Element single = document.createElement("single");
 		single.appendChild(document.createTextNode("false"));
@@ -88,7 +88,7 @@ public class VisitorXML implements QuestionVisitor {
 		question.appendChild(questionText);
 		questionText.setAttribute("format", "html");
 		Element description = document.createElement("text");
-		description.appendChild(document.createTextNode("<![CDATA[<p>"+q.getDescription()+"</p>]]>"));
+		description.appendChild(document.createCDATASection("<p>"+q.getDescription()+"</p>"));
 		questionText.appendChild(description);
 		
 		Map<Character, String> left = q.getMatchingResponsesLeft();
@@ -100,12 +100,12 @@ public class VisitorXML implements QuestionVisitor {
 			SubQuestion.setAttribute("format", "html");
 			if(answers.containsKey(c)) {
 				Element leftPart = document.createElement("text");
-				leftPart.appendChild(document.createTextNode("<![CDATA[<p>"+left.get(c)+"</p>]]>"));
+				leftPart.appendChild(document.createCDATASection("<p>"+left.get(c)+"</p>"));
 				SubQuestion.appendChild(leftPart);
 				
 				Element rightPart = document.createElement("answer");
 				Element rightPartText = document.createElement("text");
-				rightPartText.appendChild(document.createTextNode("<![CDATA[<p>"+right.get(answers.get(c))+"</p>]]>"));
+				rightPartText.appendChild(document.createCDATASection("<p>"+right.get(answers.get(c))+"</p>"));
 				rightPart.appendChild(rightPartText);
 				SubQuestion.appendChild(rightPart);
 			}
@@ -128,7 +128,7 @@ public class VisitorXML implements QuestionVisitor {
 		question.appendChild(questionText);
 		questionText.setAttribute("format", "html");
 		Element description = document.createElement("text");
-		description.appendChild(document.createTextNode("<![CDATA[<p>"+q.getDescription()+"</p>]]>"));
+		description.appendChild(document.createCDATASection("<p>"+q.getDescription()+"</p>"));
 		questionText.appendChild(description);
 		List<String> answers = q.getAnswersShort();
 		System.out.println(answers.size());

@@ -1,0 +1,20 @@
+Quelle est le format supporter par moodle?
+A.XML
+B.Aiken
+C.Gift
+D.PHP
+ANSWER: A,B,C
+
+Relier correctement?
+A.22
+B.32
+C.12
+a.5
+b.3
+c.4
+LINKS: A->c,B->a,C->b
+
+Quelle est le resultat de 2+2:
+RESPONSE: Quatre,4,IV
+
+

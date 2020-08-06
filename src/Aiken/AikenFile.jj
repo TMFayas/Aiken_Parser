@@ -1,0 +1,181 @@
+PARSER_BEGIN(AikenFile)
+    /** Question File Aiken. */
+package Aiken;
+
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+
+    public class AikenFile {
+
+        /** Main entry point. */
+        public static void main(String args[]) throws ParseException  {
+            AikenFile parser = new AikenFile(System.in);
+            List<Question> Questions = parser.File();
+            System.out.println(Questions.toString());
+            QuestionVisitor v = new VisitorXML();
+            for( Question q : Questions) {
+				q.accept(v);
+            }
+            v.getFile();
+        }
+    }
+
+PARSER_END(AikenFile)
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+
+TOKEN :
+{
+  < MAJ: ["A"-"Z"] >
+}
+
+TOKEN :
+{
+  < MIN: ["a"-"z"] >
+}
+
+
+
+TOKEN :
+{
+  < WORD: ["a"-"z","A"-"Z","0"-"9"] ( ["a"-"z","A"-"Z","_","0"-"9","+"] )* >
+}
+
+
+/** Root production. */
+List<Question> File() :
+  {List<Question> QuestionList = new ArrayList<Question>();}
+  {
+      QuestionList=Questions(QuestionList) <EOF>
+      { return QuestionList;}
+  }
+
+/** List of questions */
+List<Question> Questions(List<Question> list) :
+  {Question q = new Question();
+  }
+  {
+      q=Question(){list.add(q); } (list=Questions(list) |  <EOF>)
+      { return list;}
+  }
+
+/** Question */
+Question Question() :
+  {	String s ="";
+  	Token c;
+  	Question q = new Question();
+  	Map<Character,String> choice = new HashMap<Character,String >();
+	
+  }
+  {
+      s=Description()  (c = "?"|c = ":")   q = QuestionRemainder(choice) { q.setDescription(s+c.image);}
+      { return q;}
+  }
+
+/** Description */
+String Description() :
+  {Token res;
+  	String d="";
+
+  }
+  {	res = <WORD> { d+= res.image+" "; } (res = <WORD> { d+=res.image+" "; })* {return d; }}
+
+/** Several kind of questions */
+Question QuestionRemainder (Map<Character,String> choice) :
+  {	
+  	Token c;
+  	String res;
+  	Question q = new Question();
+  	List<String> responses = new ArrayList<String>();
+  	
+  }
+  {
+      (c=<MAJ> {res=c.image; char car = res.charAt(0); } "." res= Description() { choice.put(car,res);} (q =QuestionRemainder(choice) | q=QuestionSecond())
+		{if (q instanceof QuestionMultipleChoice) {
+		  QuestionMultipleChoice qcm = new QuestionMultipleChoice();
+		  qcm.setResponses(choice);
+		  qcm.setAnswers(q.getAnswersQCM());
+		  q = qcm;
+		  }
+		}
+		{if (q instanceof QuestionMatching) {
+		  QuestionMatching match = new QuestionMatching();
+		  match.setResponsesLeft(choice);
+		  match.setResponsesRight(q.getMatchingResponsesRight());
+		  match.setAnswers(q.getAnswersMatching());
+		  q = match;
+		 }
+		}
+    | "RESPONSE:" q =LongResponse(responses) )
+    { return q; }
+ }
+
+/** Second part of question */
+Question QuestionSecond() :
+  { Token c;
+  	String res;
+    List<Character> answers = new ArrayList<Character>();
+  	Question q = new Question();
+  	Map<Character, String > choiceMatching = new HashMap<Character, String >();
+  }
+  {
+      ("ANSWER:" q =MajList(answers) 
+  	| c=<MIN> "." {res=c.image; char car = res.charAt(0); } res=Description() {choiceMatching.put(car,res); } q =QuestionSecondDiff(choiceMatching))
+      { return q;}
+  }
+
+
+QuestionMatching QuestionSecondDiff(Map<Character, String > choiceMatching) :
+{ Token c;
+  String res;
+  Map<Character,Character> link = new HashMap<Character, Character>();
+  QuestionMatching q = new QuestionMatching();
+}
+{
+ 	 ( c = <MIN> "." {res=c.image; char car = res.charAt(0); } res=Description() {choiceMatching.put(car,res);  } q =QuestionSecondDiff(choiceMatching) { q.setResponsesRight(choiceMatching);}
+	|"LINKS:"  q = LinkList(link) )
+	
+	{return q;}
+}
+
+/** List of uppercase letters separated by comma */
+QuestionMultipleChoice MajList(List<Character> ans) :
+  {Token c;
+  	QuestionMultipleChoice q = new QuestionMultipleChoice();
+  }
+  {
+      c=<MAJ> { String res = c.image; char ca = res.charAt(0); ans.add(ca); q.setAnswers(ans);} ("," MajList(ans))? { return q; }
+  }
+
+/** List of associations */
+QuestionMatching LinkList(Map<Character,Character> link) :
+  {Token c1;
+	Token c2;
+	QuestionMatching q = new QuestionMatching();
+  }
+  {
+       c1=<MAJ> "->" c2=<MIN> { String res1 = c1.image; char car1 = res1.charAt(0); String res2 = c2.image; char car2 = res2.charAt(0); link.put(car1,car2); q.setAnswers(link);}("," LinkList(link))?
+       { return q;}
+  }
+
+/** Long response */
+QuestionShortResponse LongResponse(List<String> responses) :
+  {Token c;
+   String res;
+   QuestionShortResponse q = new QuestionShortResponse();
+   
+  }
+  {
+      c=<WORD> { res = c.image; responses.add(res);}("," LongResponse(responses))? { q.setAnswers(responses);}
+      { return q;}
+  }

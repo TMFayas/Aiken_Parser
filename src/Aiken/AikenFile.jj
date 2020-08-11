@@ -15,11 +15,14 @@ import java.util.ArrayList;
             AikenFile parser = new AikenFile(System.in);
             List<Question> Questions = parser.File();
             System.out.println(Questions.toString());
-            QuestionVisitor v = new VisitorXML();
+            QuestionVisitor vXML = new VisitorXML();
+            QuestionVisitor vLaTex = new VisitorLaTex();
             for( Question q : Questions) {
-				q.accept(v);
+				q.accept(vXML);
+				q.accept(vLaTex);
             }
-            v.getFile();
+            vXML.getFile();
+            vLaTex.getFile();
         }
     }
 

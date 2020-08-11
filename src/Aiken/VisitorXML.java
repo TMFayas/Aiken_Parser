@@ -32,7 +32,7 @@ public class VisitorXML implements QuestionVisitor {
 			e.printStackTrace();
 		}
 	}
-	@Override
+	
 	public void visitQuestionMultipleChoice(Question q) {
 			
 		Element question = document.createElement("question");
@@ -73,7 +73,7 @@ public class VisitorXML implements QuestionVisitor {
 		
 	}
 
-	@Override
+	
 	public void visitQuestionMatching(Question q) {
 
 		Element question = document.createElement("question");
@@ -113,7 +113,7 @@ public class VisitorXML implements QuestionVisitor {
 
 	}
 
-	@Override
+	
 	public void visitQuestionShortResponse(Question q) {
 
 		Element question = document.createElement("question");

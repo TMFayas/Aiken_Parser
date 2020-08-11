@@ -14,7 +14,7 @@ public class VisitorLaTex implements QuestionVisitor {
 				"\\usepackage[french]{babel}\n\\newenvironment{qcm}{Question (QCM)}{}\r\n" + 
 				"\\newenvironment{answer}{\\begin{enumerate}}{\\end{enumerate}}\r\n" + 
 				"\\newenvironment{qmatch}{Question (Association)}{}\r\n" + 
-				"\\newenvironment{qshort}{Question (Réponse courte)}{}\r\n" + 
+				"\\newenvironment{qshort}{Question (Reponse courte)}{}\r\n" + 
 				"\r\n" + 
 				"\\begin{document}\r\n";
 	}
@@ -25,14 +25,14 @@ public class VisitorLaTex implements QuestionVisitor {
 		
 		Map<Character,String> responses = q.getResponses();
 		for(Character c : responses.keySet()) {
-			res += "\\item" + c+". "+responses.get(c)+"\n";
+			res += "\\item "+responses.get(c)+"\\\\\n";
 		}
-		res += "\\end{answer}\n\\end{qcm}\n";
+		res += "\\end{answer}\n\\end{qcm}"+"\\\\\n";
 	}
 
 	
 	public void visitQuestionMatching(Question q) {
-		res += "\\begin{qmatch}" + q.getDescription() +"\\begin{tabular}{ll}\n";
+		res += "\\begin{qmatch}\n" + q.getDescription()+"\\\\" +"\\begin{tabular}{ll}\n";
 		
 		Map<Character, String> left = q.getMatchingResponsesLeft();
 		Map<Character, String> right = q.getMatchingResponsesRight();
@@ -44,7 +44,7 @@ public class VisitorLaTex implements QuestionVisitor {
 			res += leftResponses[i] + "&" + rightResponses[i]+" \\\\ \n";
 		}
 		res += " \\end{tabular}\r\n" + 
-				"\\end{qmatch}\n";
+				"\\end{qmatch}"+"\\\\\n";
 
 	}
 
@@ -52,7 +52,7 @@ public class VisitorLaTex implements QuestionVisitor {
 	public void visitQuestionShortResponse(Question q) {
 		res += "\\begin{qshort}\n" + q.getDescription()
 				+"\\\\"+ "............................................"
-				+"\\end{qshort}\n";
+				+"\\end{qshort}"+"\\\\\n";
 
 	}
 
@@ -63,9 +63,7 @@ public class VisitorLaTex implements QuestionVisitor {
 			FileWriter file = new FileWriter("Test.tex");
 			file.write(res);
 			file.close();
-			System.out.println(res);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

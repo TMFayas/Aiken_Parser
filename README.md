@@ -11,14 +11,14 @@ Description ? ou :\
 A. ChoixA \
 B. ChoixB\
 .... \
-ANSWER : A,B...\ 
+ANSWER : A,B...
   **Exemple**
 
 Quelle est la capital de France ?\
 A. New York\
 B. Paris\
 C. Berlin\
-ANSWER: B\
+ANSWER: B
 
   ## Aparaillement
   **Format**
@@ -30,7 +30,7 @@ B. ChoixB\
 a. Reponsea\
 b. reponseb\
 ...\
-LINKS: A->a, B->b,...\
+LINKS: A->a, B->b,...
   **Exemple**
 
 

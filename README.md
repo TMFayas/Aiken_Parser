@@ -4,22 +4,22 @@ le système prends un fichier textuel écrit sous le format Aiken (modifié) et 
 # Utilisation
 
   # Format Aiken modifié
-    ## QCM
-      Format
+  ## QCM
+  Format
 Description ? ou :\n
 A. ChoixA \n
 B. ChoixB \n
 .... \n
 ANSWER : A,B... \n
-      Exemple\n
+  Exemple\n
 Quelle est la capital de France ?\n
 A. New York\n
 B. Paris\n
 C. Berlin\n
 ANSWER: B\n
 
-    ## Aparaillement
-      Format
+  ## Aparaillement
+  Format
 Description ? ou :
 A. ChoixA
 B. ChoixB
@@ -28,6 +28,6 @@ a. Reponsea
 b. reponseb
 ...
 LINKS: A->a, B->b,...
-      Exemple
+  Exemple
 
 

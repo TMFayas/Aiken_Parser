@@ -6,12 +6,14 @@ le système prends un fichier textuel écrit sous le format Aiken (modifié) et 
   # Format Aiken modifié
   ## QCM
   Format
+# code block
 Description ? ou :
 A. ChoixA 
 B. ChoixB
 .... 
 ANSWER : A,B... 
   Exemple
+# code block
 Quelle est la capital de France ?
 A. New York
 B. Paris
@@ -20,6 +22,7 @@ ANSWER: B
 
   ## Aparaillement
   Format
+# code block
 Description ? ou :
 A. ChoixA
 B. ChoixB

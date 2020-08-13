@@ -18,7 +18,7 @@ B. Paris
 C. Berlin
 ANSWER: B
 
-   Aparaillement
+    Aparaillement
       Format
 Description ? ou :
 A. ChoixA

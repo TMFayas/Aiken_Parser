@@ -12,6 +12,7 @@ A. ChoixA \
 B. ChoixB\
 .... \
 ANSWER : A,B...
+
 **Exemple**
 
 Quelle est la capital de France ?\
@@ -31,6 +32,7 @@ a. Reponsea\
 b. reponseb\
 ...\
 LINKS: A->a, B->b,...
+
 **Exemple**
 
 

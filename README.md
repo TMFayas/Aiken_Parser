@@ -12,7 +12,7 @@ A. ChoixA \
 B. ChoixB\
 .... \
 ANSWER : A,B...
-  **Exemple**
+**Exemple**
 
 Quelle est la capital de France ?\
 A. New York\
@@ -21,7 +21,7 @@ C. Berlin\
 ANSWER: B
 
   ## Aparaillement
-  **Format**
+**Format**
 
 Description ? ou :\
 A. ChoixA\
@@ -31,6 +31,6 @@ a. Reponsea\
 b. reponseb\
 ...\
 LINKS: A->a, B->b,...
-  **Exemple**
+**Exemple**
 
 

@@ -1,7 +1,13 @@
 #!/bin/bash
 
-javacc Aiken/AikenFile.jj
+javacc -OUTPUT_DIRECTORY=./src/Aiken ./src/Aiken/AikenFile.jj
 
-javac Aiken/*.java
+javac ./src/Aiken/*.java
 
-java Aiken.AikenFile < Aiken/Exemple.txt
+cd ./src
+
+java Aiken.AikenFile $2 $3 < Aiken/$1
+
+cd ..
+
+pdflatex $3

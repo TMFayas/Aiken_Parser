@@ -6,31 +6,31 @@ le système prends un fichier textuel écrit sous le format Aiken (modifié) et 
   # Format Aiken modifié
   ## QCM
   Format
-# code block
-Description ? ou :
-A. ChoixA 
-B. ChoixB
-.... 
-ANSWER : A,B... 
-  Exemple
-# code block
-Quelle est la capital de France ?
-A. New York
-B. Paris
-C. Berlin
-ANSWER: B
+
+Description ? ou :\
+A. ChoixA \
+B. ChoixB\
+.... \
+ANSWER : A,B...\ 
+  **Exemple**
+
+Quelle est la capital de France ?\
+A. New York\
+B. Paris\
+C. Berlin\
+ANSWER: B\
 
   ## Aparaillement
-  Format
-# code block
-Description ? ou :
-A. ChoixA
-B. ChoixB
-...
-a. Reponsea
-b. reponseb
-...
-LINKS: A->a, B->b,...
-  Exemple
+  **Format**
+
+Description ? ou :\
+A. ChoixA\
+B. ChoixB\
+...\
+a. Reponsea\
+b. reponseb\
+...\
+LINKS: A->a, B->b,...\
+  **Exemple**
 
 

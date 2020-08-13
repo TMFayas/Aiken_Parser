@@ -21,8 +21,22 @@ import java.util.ArrayList;
 				q.accept(vXML);
 				q.accept(vLaTex);
             }
-            vXML.getFile();
-            vLaTex.getFile();
+	    if(args.length == 2){
+		if(args[0].substring(args[0].length()-4,args[0].length()).equals(".xml") && 
+		   args[1].substring(args[1].length()-4,args[1].length()).equals(".tex")){
+			vXML.getFile(args[0]);
+			vLaTex.getFile(args[1]);
+		}
+		else{
+			System.out.println("Arguement erreur : the filename is not appropriate");
+			System.exit(1);
+		}
+	    }
+	    else{
+		vXML.getFile("XmlFile.xml");
+            	vLaTex.getFile("LaTexFile.tex");
+	    }
+            
         }
     }
 

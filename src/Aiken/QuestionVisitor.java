@@ -8,5 +8,5 @@ public interface QuestionVisitor {
 	
 	public void visitQuestionShortResponse(Question q);
 	
-	public void getFile();
+	public void getFile(String name);
 }

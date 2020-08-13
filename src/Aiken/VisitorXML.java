@@ -145,14 +145,14 @@ public class VisitorXML implements QuestionVisitor {
 
 	}
 	
-	public void getFile() {
+	public void getFile(String name) {
 		
 		try {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer;
 			transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(document);
-			StreamResult sortie = new StreamResult(new File("file.xml"));
+			StreamResult sortie = new StreamResult(new File(name));
 		  //final StreamResult result = new StreamResult(System.out);
 				
 		  //prologue

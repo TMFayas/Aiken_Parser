@@ -27,7 +27,7 @@ public class VisitorLaTex implements QuestionVisitor {
 		for(Character c : responses.keySet()) {
 			res += "\\item "+responses.get(c)+"\\\\\n";
 		}
-		res += "\\end{answer}\n\\end{qcm}"+"\\\\\n";
+		res += "\\end{answer}\n\\end{qcm}"+"\n";
 	}
 
 	
@@ -57,10 +57,10 @@ public class VisitorLaTex implements QuestionVisitor {
 	}
 
 	
-	public void getFile() {
+	public void getFile(String name) {
 		res += "\\end{document}";
 		try {
-			FileWriter file = new FileWriter("Test.tex");
+			FileWriter file = new FileWriter(name);
 			file.write(res);
 			file.close();
 		} catch (IOException e) {

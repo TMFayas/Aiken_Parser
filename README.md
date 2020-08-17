@@ -1,4 +1,4 @@
-Ce projet permet aux utilisateur de Moodle de créer plus facilement les questions. Actuellement seul les questions de type QCM, apparaillement et réponse courte sont prise en compte. 
+Ce projet permet aux utilisateurs de Moodle de créer plus facilement les questions. Actuellement seules les questions du type QCM, appariement et réponse courte sont prises en compte. 
 le système prends un fichier textuel écrit sous le format Aiken (modifié) et en sortie le système fournit un fichier XML Moodle (à importer sur Moodle), un fichier PDF avec les questions.
 
 # Utilisation

@@ -59,6 +59,10 @@ RESPONSES: 4, Quatre, IV
 
 # Instruction
 
-Récuperer tous le projet dans son ensemble. Une fois les dossiers récupérés il faut exécuté le fichiers execute.sh avec comme option le nom du fichier Akien qui comporte les questions et le nom du fichiers 
+Récuperer tous le projet dans son ensemble. Une fois les dossiers récupérés il faut exécuté le fichier execute.sh avec comme option le nom du fichier Aiken qui comporte les questions, le nom du fichiers XML à la sortie et ainsi que le nom du fichier PDF à la sortie (le fichier PDF est créer à partir d'un fichier LaTex).
+
+  ./execute.sh Exemple.txt fileXML.xml filePDF.tex
+
+
 
 

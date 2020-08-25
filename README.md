@@ -64,6 +64,7 @@ Récupérer tous le projet dans son ensemble. Une fois les dossiers récupérés
   `./execute.sh Exemple.txt fileXML.xml filePDF.tex`
 
 En cas d'échec vérifier que vous avez bien installé JavaCC et pdflatex.
+
 **JavaCC**
 suivre les instruction sur https://javacc.github.io/javacc/#download
 

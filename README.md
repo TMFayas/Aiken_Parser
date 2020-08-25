@@ -69,6 +69,6 @@ suivre les instruction sur https://javacc.github.io/javacc/#download
 
 **pdflatex**
   
-  `sudo apt install texlive-base
+  `sudo apt install texlive-base`
 
 
